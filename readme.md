@@ -18,9 +18,9 @@ git status
 git add .
 git commit -m "Initial commit"
 git branch -M main
-git remote add origin https://diegopenuela:<MYTOKEN>@github.com/diegopenuela/fastapi_social.git
+git remote add origin https://diegopenuela: (MYTOKEN) @github.com/diegopenuela/fastapi_social.git
 
-git remote set-url origin https://diegopenuela:<MYTOKEN>@github.com/diegopenuela/fastapi_social.git
+git remote set-url origin https://diegopenuela: (MYTOKEN) @github.com/diegopenuela/fastapi_social.git
 git push -u origin main
 
 # FASTAPI
