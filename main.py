@@ -62,13 +62,27 @@ async def get_post(id: int): #FastAPI enforces data validation and type conversi
 async def delete_post(id: int):
     #Find the index in the array
     index = find_index_post(id)
-
+    #Check if post exists
     if index == None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
                             detail=f"post with id: {id} was not found")
-    else:
-        my_posts.pop(index)
-        return Response(status_code=status.HTTP_204_NO_CONTENT)
+    #Remove post from array                       
+    my_posts.pop(index)
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+@app.put("/posts/{id}")
+async def delete_post(id: int, post: Post):
+    #Find the post's index in the array
+    index = find_index_post(id)
+    #Check if post exists
+    if index == None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
+                            detail=f"post with id: {id} was not found")
+    post_dict = post.dict()
+    post_dict['id'] = id
+    my_posts[index] = post_dict
+    return {"data": post_dict}
+
 
 
 #Tutorial Example: Create a post and read data direclty from the body request. No database needed.
